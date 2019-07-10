@@ -1,0 +1,9 @@
+<h1>It's a todo app</h1>
+<%= form_for(@todo) do |f| %>
+  <%= f.label :todo %>
+  <br>
+  <%= f.text_field :title %>
+  <%= f.submit "Create" %>
+<% end %>
+<br>
+<%= link_to "Go back home", :home %>
