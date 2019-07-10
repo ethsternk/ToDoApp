@@ -1,0 +1,6 @@
+<h1>It's a todo app</h1>
+<% @todos.each do |t| %>
+  <%= check_box_tag 'complete', t.complete, t.complete %>
+  <%= t.title %>
+  <br />
+<% end %>
