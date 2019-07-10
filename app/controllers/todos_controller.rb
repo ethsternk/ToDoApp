@@ -5,6 +5,14 @@ class TodosController < ApplicationController
     @todos = Todo.all
   end
 
+  def completed
+    @todos = Todo.where(complete: true)
+  end
+
+  def unfinished
+    @todos = Todo.where(complete: false)
+  end
+
   def new
     @todo = Todo.new
   end
@@ -26,6 +34,6 @@ class TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:title)
+    params.require(:todo).permit(:title, :complete)
   end
 end
