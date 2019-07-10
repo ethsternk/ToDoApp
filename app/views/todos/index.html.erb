@@ -2,6 +2,7 @@
 <% @todos.each do |t| %>
   <%= check_box_tag 'complete', t.complete, t.complete %>
   <%= t.title %>
+  <%= button_to('delete', delete_path(t), method: "delete") %>
   <br />
 <% end %>
 <br>

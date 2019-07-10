@@ -18,6 +18,11 @@ class TodosController < ApplicationController
     end
   end
 
+  def destroy
+    @todo = Todo.delete(params[:id])
+    redirect_to '/todos'
+  end
+
   private
 
   def todo_params
