@@ -1,7 +1,7 @@
 <h1>It's a todo app</h1>
 
   <div style='border: 1px solid black; background-color: #dedede; padding: 5px; border-radius: 5px'>
-    <%= check_box_tag 'complete', @todo.complete, @todo.complete %>
+    <%= check_box_tag 'complete', @todo.complete, @todo.complete, disabled: true %>
     <span style='font-size: 10px'>
       <strong>#<%= @todo.id %></strong> – <%= @todo.created_at %>
     </span>
