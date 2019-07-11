@@ -1,16 +1,21 @@
 # frozen_string_literal: true
 
 class TodosController < ApplicationController
+
   def index
-    @todos = Todo.all
+    @todos = Todo.all.sort { |a, b|  a.created_at <=> b.created_at }
   end
 
   def completed
-    @todos = Todo.where(complete: true)
+    @todos = Todo.where(complete: true).sort { |a, b|  a.created_at <=> b.created_at }
   end
 
   def unfinished
-    @todos = Todo.where(complete: false)
+    @todos = Todo.where(complete: false).sort { |a, b|  a.created_at <=> b.created_at }
+  end
+
+  def show
+    @todo = Todo.find(params[:id])
   end
 
   def new
@@ -27,8 +32,23 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    @todo = Todo.delete(params[:id])
-    redirect_to '/todos'
+    @todo = Todo.find(params[:id])
+    @todo.destroy
+
+    redirect_to todos_path
+  end
+
+  def edit
+    @todo = Todo.find(params[:id])
+  end
+
+  def update
+    @todo = Todo.find(params[:id])
+    if @todo.update(todo_params)
+      redirect_to @todo
+    else
+      render 'edit'
+    end
   end
 
   private

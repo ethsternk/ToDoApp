@@ -1,0 +1,21 @@
+<h1>It's a todo app</h1>
+
+  <div style='border: 1px solid black; background-color: #dedede; padding: 5px; border-radius: 5px'>
+    <%= check_box_tag 'complete', @todo.complete, @todo.complete %>
+    <span style='font-size: 10px'>
+      <strong>#<%= @todo.id %></strong> – <%= @todo.created_at %>
+    </span>
+    <br>
+    <span style='font-size: 20px; margin: 5px'><%= @todo.title %></span>
+    <div style='display: flex'>
+      <%= button_to('edit', edit_todo_path(@todo), method: 'get') %>
+      <%= button_to('delete', todo_path(@todo), method: 'delete', data: { confirm: 'Sure about that bro?' }) %>
+    </div>
+  </div>
+  <br>
+
+<br>
+<%= link_to "Go back home", '/todos' %>
+<br>
+<br>
+<%= link_to "Create new", '/todos/new' %>

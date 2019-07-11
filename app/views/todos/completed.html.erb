@@ -1,14 +1,24 @@
 <h1>It's a todo app</h1>
-<%= link_to "All", :home %> |
+<%= link_to "All", '/todos' %> |
 Completed |
 <%= link_to "Unfinished", :unfinished %>
 <br>
 <br>
 <% @todos.each do |t| %>
-  <%= check_box_tag 'complete', t.complete, t.complete %>
-  <%= t.title %>
-  <%= button_to('delete', delete_path(t), method: "delete") %>
-  <br />
+  <div style='border: 1px solid black; background-color: #dedede; padding: 5px; border-radius: 5px'>
+    <%= check_box_tag 'complete', t.complete, t.complete %>
+    <span style='font-size: 10px'>
+      <strong>#<%= t.id %></strong> – <%= t.created_at %>
+    </span>
+    <br>
+    <span style='font-size: 20px; margin: 5px'><%= t.title %></span>
+    <div style='display: flex'>
+      <%= button_to('show', todo_path(t), method: 'get') %>
+      <%= button_to('edit', edit_todo_path(t), method: 'get') %>
+      <%= button_to('delete', todo_path(t), method: 'delete', data: { confirm: 'Sure about that bro?' }) %>
+    </div>
+  </div>
+  <br>
 <% end %>
 <br>
-<%= link_to "Create new", :new %>
+<%= link_to "Create new", '/todos/new' %>
