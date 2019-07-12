@@ -1,16 +1,4 @@
 <h1>It's a todo app</h1>
 <h2>New todo (newdo)</h2>
-<%= form_for :todo, url: todos_path do |f| %>
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label "Complete?" %>
-    <%= f.check_box :complete %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-<%= link_to "Go back home", '/todos' %>
+<%= render 'form' %>
+<%= link_to "Go back home", todos_path %>
